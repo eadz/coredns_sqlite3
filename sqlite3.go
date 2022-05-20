@@ -1,4 +1,4 @@
-package coredns_mysql
+package coredns_sqlite3
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/miekg/dns"
 )
 
-func (handler *CoreDNSMySql) findRecord(zone string, name string, types ...string) ([]*Record, error) {
+func (handler *CoreDNSSqlite3) findRecord(zone string, name string, types ...string) ([]*Record, error) {
 	db, err := handler.db()
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func (handler *CoreDNSMySql) findRecord(zone string, name string, types ...strin
 	return records, nil
 }
 
-func (handler *CoreDNSMySql) loadZones() error {
+func (handler *CoreDNSSqlite3) loadZones() error {
 	db, err := handler.db()
 	if err != nil {
 		return err
@@ -81,7 +81,7 @@ func (handler *CoreDNSMySql) loadZones() error {
 	return nil
 }
 
-func (handler *CoreDNSMySql) hosts(zone string, name string) ([]dns.RR, error) {
+func (handler *CoreDNSSqlite3) hosts(zone string, name string) ([]dns.RR, error) {
 	recs, err := handler.findRecord(zone, name, "A", "AAAA", "CNAME")
 	if err != nil {
 		return nil, err

@@ -1,4 +1,4 @@
-package coredns_mysql
+package coredns_sqlite3
 
 import (
 	"encoding/json"
@@ -15,7 +15,7 @@ type Record struct {
 	Ttl        uint32
 	Content    string
 
-	handler *CoreDNSMySql
+	handler *CoreDNSSqlite3
 }
 
 type ARecord struct {

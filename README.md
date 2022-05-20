@@ -1,17 +1,17 @@
-# MySQL
+# Sqlite3
 
-MySQL backend for CoreDNS
+Sqlite3 backend for CoreDNS
 
 ## Name
-mysql - MySQL backend for CoreDNS
+sqlite3 - Sqlite3 backend for CoreDNS
 
 ## Description
 
-This plugin uses MySQL as a backend to store DNS records. These will then can served by CoreDNS. The backend uses a simple, single table data structure that can be shared by other systems to add and remove records from the DNS server. As there is no state stored in the plugin, the service can be scaled out by spinning multiple instances of CoreDNS backed by the same database.
+This plugin uses Sqlite3 as a backend to store DNS records. These will then can served by CoreDNS. The backend uses a simple, single table data structure that can be shared by other systems to add and remove records from the DNS server. As there is no state stored in the plugin, the service can be scaled out by spinning multiple instances of CoreDNS backed by the same database.
 
 ## Syntax
 ```
-mysql {
+sqlite3 {
     dsn DSN
     [table_prefix TABLE_PREFIX]
     [max_lifetime MAX_LIFETIME]
@@ -22,8 +22,8 @@ mysql {
 }
 ```
 
-- `dsn` DSN for MySQL as per https://github.com/go-sql-driver/mysql examples. You can use `$ENV_NAME` format in the DSN, and it will be replaced with the environment variable value.
-- `table_prefix` Prefix for the MySQL tables. Defaults to `coredns_`.
+- `dsn` DSN for MySQL as per https://github.com/mattn/go-sqlite3 examples. You can use `$ENV_NAME` format in the DSN, and it will be replaced with the environment variable value.
+- `table_prefix` Prefix for the Sqlite3 tables. Defaults to `coredns_`.
 - `max_lifetime` Duration (in Golang format) for a SQL connection. Default is 1 minute.
 - `max_open_connections` Maximum number of open connections to the database server. Default is 10.
 - `max_idle_connections` Maximum number of idle connections in the database connection pool. Default is 10.
