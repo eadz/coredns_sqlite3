@@ -77,6 +77,7 @@ func (handler *CoreDNSSqlite3) loadZones() error {
 
 	handler.lastZoneUpdate = time.Now()
 	handler.zones = zones
+	fmt.Println(zones)
 
 	return nil
 }
